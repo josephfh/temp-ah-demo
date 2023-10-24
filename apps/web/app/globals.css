@@ -1,25 +1,25 @@
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
-    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
+    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
+    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 0, 0, 0;
-  --background-end-rgb: 0, 0, 0;
+  --foreground-rgb: 11, 11, 11;
+  --background-rgb: 215, 234, 213;
+  --background-brand-rgb: 160, 240, 150;
+  --background-light-rgb: 255, 255, 255;
+  --background-warning-rgb: 255, 240, 240;
 
-  --callout-rgb: 20, 20, 20;
-  --callout-border-rgb: 108, 108, 108;
-  --card-rgb: 100, 100, 100;
-  --card-border-rgb: 200, 200, 200;
+  --border-rgb: 220, 220, 220;
 
-  --glow-conic: conic-gradient(
-    from 180deg at 50% 50%,
-    #2a8af6 0deg,
-    #a853ba 180deg,
-    #e92a67 360deg
-  );
+  --brand-rgb: 0, 205, 79;
+
+  --brand-dark-rgb: 23, 93, 48;
+  --brand-dark-inverse-rgb: 255, 255, 255;
+
+  --success-rgb: 0, 205, 79;
+  --warning-rgb: 255, 43, 43;
 }
 
 * {
@@ -36,12 +36,18 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+h2,
+p {
+  padding-bottom: 2rem;
+  color: rgb(var(--brand-darker-rgb));
+  line-height: 1.5em;
+}
+
+p {
+  line-height: 1.5em;
 }
 
 a {

@@ -1,81 +1,39 @@
-# Turborepo starter
+# AH code demo
 
-This is an official starter Turborepo.
-
-## Using this example
-
-Run the following command:
-
-```sh
-npx create-turbo@latest
-```
-
-## What's inside?
-
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
+Hi! To try out this demo please install the dependencies and start development
 
 ```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
+pnpm i
 pnpm dev
 ```
 
-### Remote Caching
+You'll then be able to access the demo at http://localhost:3000
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+Thanks!
+Joseph - josephhughes@gmail.com
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+## Some notes
+
+- I've used Turborepo to scaffold the project, as I probably would in a real world example. This is how I'd usually keep reusable code, UI and functionality separate from the web app.
+- I've used TailwindCSS 100% for a few years, but decided to style this with some quick plain CSS to make it clearer as to how I'm styling it. As a result, I am just importing styles into the tsx files. In a real app I'd work out how best to keep the styles and the UI components reusable and stylable, even if just SASS and sensible class names
+- Instead of importing the JSON directly into React, I thought it would be fun to set up a mock API using Nest.js. This way I could experiment with Next.js's new Api Router, which I haven't used before. Also, I had hoped to demonstrate some loading indicators/skeleton elements/API error handling, but I ran out of time.
+- Nest.js App Router looks good. This is my first time, but I've used Astro.js and Nuxt, which use a similar idea
+- I need to read more of the App Router docs to work out how to make an app in Next.js that offers both hydration of _some_ dynamic routes and a simple way to fetch the latest API data on the client
+- Of course, real world prescription data would only be served through an authenticated, client-only API. I would set up some global state management, and cache data across page transitions
+- I'd definitely move the listing code to it's own components once I'd set up global state and proper styling!
+- The code doesn't look right without proper ARIA accessibility attributes. Also missing are proper styles for keyboard navigation on links and buttons
+
+## Building
 
 ```
-cd my-turborepo
-npx turbo login
+pnpm build
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+Building the next.js web app will work if you are running the api in dev mode. From another terminal window, start the api app separately
 
 ```
-npx turbo link
+cd apps/api
+pnpm dev
 ```
 
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+To properly develop this, Turborepo needs to have the pipeline properly setup for both dev and production, using whatever dotenv/CI/hooks magic is needed :)
